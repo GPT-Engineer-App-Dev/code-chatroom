@@ -19,6 +19,9 @@ const Index = () => {
           <Link as={RouterLink} to="/about" color="white">
             About
           </Link>
+          <Link as={RouterLink} to="/register" color="white">
+            Register
+          </Link>
         </HStack>
       </Flex>
 
