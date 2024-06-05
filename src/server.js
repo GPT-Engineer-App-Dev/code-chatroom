@@ -6,6 +6,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 const users = [];
+const posts = [];
 
 app.post("/api/register", (req, res) => {
   const { username, email, password } = req.body;
@@ -22,6 +23,17 @@ app.post("/api/register", (req, res) => {
 
   users.push({ username, email, password });
   res.status(201).json({ message: "Registration successful!" });
+});
+
+app.post("/api/posts", (req, res) => {
+  const { title, content, category } = req.body;
+
+  if (!title || !content || !category) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+
+  posts.push({ title, content, category, createdAt: new Date() });
+  res.status(201).json({ message: "Post created successfully!" });
 });
 
 app.listen(port, () => {
